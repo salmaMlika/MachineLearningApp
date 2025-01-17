@@ -13,8 +13,9 @@ def main():
     st.title("Binary classification web app")
     st.sidebar.title("Binary classification web app")
     st.markdown("are your mashrooms edible or poisonous ? 🍄")
-    st.sidebar.markdown("are your mashrooms edible or poisonous ? 🍄")
-
+    st.sidebar.markdown("are your maashrooms edible or poisonous ? 🍄")
+    
+    @st.cache_data
     def load_data():
      data=pd.read_csv('/home/coder/Desktop/Project/mushrooms.csv')
      label=LabelEncoder()
