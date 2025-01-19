@@ -30,6 +30,8 @@ This application requires no prior programming knowledge, making it ideal for no
 
 ### Prerequisites
 Ensure you have Python installed along with the required libraries.
+```bash
+pip install -r requirements.txt
 
 ### Launch the App with Streamlit
 
