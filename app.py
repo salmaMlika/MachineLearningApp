@@ -100,7 +100,25 @@ def main():
             st.write("Precision:", round(precision_score(y_test, y_pred),2))
             st.write("Recall:",  round( recall_score(y_test, y_pred),2))
             plot_metrics(metrics, model, x_test, y_test)
-    
+    if classifier == "Random Forest":
+        st.sidebar.subheader("Model Hyperparameters")
+        n_estimators = st.sidebar.number_input("the number of trees in the forest",100,5000,step=10,key='C_RF')
+        max_depth=st.sidebar.number_input("the maxximum depth of the tree",1,20,step=1,key='ma_depth')
+        bootstrap=st.sidebar.radio("bootstrap samples when building trees",(True,False),key='boostrap')
+        metrics = st.sidebar.multiselect("What metrics to plot?", ("Confusion Matrix", "ROC Curve", "Precision-Recall Curve"))
+        
+        if st.sidebar.button("Classify", key='classify'):
+            st.subheader("Random forrest Results")
+            model =RandomForestClassifier(n_estimators=n_estimators,max_depth=max_depth,bootstrap=bootstrap)
+            model.fit(x_train, y_train)
+            y_pred = model.predict(x_test)
+            
+            accuracy = model.score(x_test, y_test)
+            st.write("Accuracy:", round(accuracy, 2))
+            st.write("Precision:", round(precision_score(y_test, y_pred),2))
+            st.write("Recall:",  round( recall_score(y_test, y_pred),2))
+            plot_metrics(metrics, model, x_test, y_test)
+
     if st.sidebar.checkbox("Show raw data", False):
         st.subheader("Mushroom Dataset (Classification)")
         st.write(df)
