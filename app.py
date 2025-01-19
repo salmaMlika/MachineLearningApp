@@ -45,13 +45,13 @@ def main():
         
         if 'ROC Curve' in metrics_list:
             st.subheader("ROC Curve")
-            fig, ax = plt.subplots()  # Crée une figure explicite
+            fig, ax = plt.subplots()  
             RocCurveDisplay.from_estimator(model, x_test, y_test, ax=ax)
             st.pyplot(fig)
         
         if 'Precision-Recall Curve' in metrics_list:
             st.subheader("Precision-Recall Curve")
-            fig, ax = plt.subplots()  # Crée une figure explicite
+            fig, ax = plt.subplots()   
             PrecisionRecallDisplay.from_estimator(model, x_test, y_test, ax=ax)
             st.pyplot(fig)
 
