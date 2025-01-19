@@ -55,7 +55,7 @@ def main():
             PrecisionRecallDisplay.from_estimator(model, x_test, y_test, ax=ax)
             st.pyplot(fig)
 
-            
+
     df = load_data()
     x_train, x_test, y_train, y_test = split(df)
     class_names = ['edible', 'poisonous']
@@ -74,6 +74,24 @@ def main():
         if st.sidebar.button("Classify", key='classify'):
             st.subheader("Support Vector Machine (SVM) Results")
             model = SVC(C=C, kernel=kernel, gamma=gamma)
+            model.fit(x_train, y_train)
+            y_pred = model.predict(x_test)
+            
+            accuracy = model.score(x_test, y_test)
+            st.write("Accuracy:", round(accuracy, 2))
+            st.write("Precision:", round(precision_score(y_test, y_pred),2))
+            st.write("Recall:",  round( recall_score(y_test, y_pred),2))
+            plot_metrics(metrics, model, x_test, y_test)
+    if classifier == "Logistic Regression":
+        st.sidebar.subheader("Model Hyperparameters")
+        C = st.sidebar.number_input("C (Regularization Parameter)", 0.01, 10.0, step=0.01, key='C_LR')
+        max_iter=st.sidebar.slider("Maximum number of iterations",100,500,key='mx_iter')
+        
+        metrics = st.sidebar.multiselect("What metrics to plot?", ("Confusion Matrix", "ROC Curve", "Precision-Recall Curve"))
+        
+        if st.sidebar.button("Classify", key='classify'):
+            st.subheader("Logistic Regression Results")
+            model =LogisticRegression(C=C,max_iter=max_iter)
             model.fit(x_train, y_train)
             y_pred = model.predict(x_test)
             
