@@ -1,4 +1,4 @@
-# Interactive Machine Learning Web App
+# Interactive Machine Learning Web App for Binary Classification
 
 This project showcases an interactive web application built with **Streamlit** and **Python**, enabling users to experiment with Machine Learning models without writing a single line of code.
 The app allows users to select a classification algorithm and interactively adjust hyperparameters through an intuitive web interface.
