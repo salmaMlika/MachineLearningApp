@@ -18,7 +18,7 @@ This application requires no prior programming knowledge, making it ideal for no
 ---
 
 
-<img src="/mlapp.pngpng" alt="Machine learning binary classification screenshot" title="Machine learning Binary classification App" width="300">
+<img src="/mlapp.png" alt="Machine learning binary classification screenshot" title="Machine learning Binary classification App" width="300">
 
 ## ✨ Features
 
